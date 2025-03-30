@@ -5,7 +5,7 @@
 -- Plugin information
 local plugin_info = {
     version = "2.1.0",
-    author = "Your Name",
+    author = "Hari",
     description = "Detects Tor traffic by examining SNI fields using Tor's exact Base32 algorithm"
 }
 
@@ -141,7 +141,6 @@ function tor_sni_detector.dissector(buffer, pinfo, tree)
         end
     end
     
-    -- Add protocol information to the packet if it's Tor-related
     local tor_color_rule_set = false
 
 -- Add protocol information to the packet if it's Tor-related
@@ -154,15 +153,12 @@ if is_tor then
         subtree:add(f_sni, sni_str)
     end
     
-    -- Change label to "Tor!" instead of "TOR"
     pinfo.cols.protocol = "Tor!"
-    -- Properly handle info column modification
     local info_text = tostring(pinfo.cols.info)
     if not info_text:match("^%[Tor!%]") then
         pinfo.cols.info = "[Tor!] " .. info_text
     end
     
-    -- Install a temporary coloring rule for packets with protocol containing "Tor!"
     
 end
 end
@@ -171,4 +167,4 @@ end
 register_postdissector(tor_sni_detector)
 
 -- Print a message when the script is loaded
-print("Tor Traffic Detector Plugin Loaded - Precise Base32 Detection with Purple Highlights")
+print("Tor Traffic Detector Plugin Loaded - Precise Base32 Detection")

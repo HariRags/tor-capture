@@ -27,3 +27,4 @@ The plugin works for both live captures and saved PCAP files.
 - Now after reloading wireshark start capture
 - Now open the Tor browser and connect
 - Tor packets will be visibile with a white background and red text with protocl name Tor! 
+- You can also open a pcap with tor traffic and it will show the Tor packets, you can use `torcapture.pcapng` as an example  
